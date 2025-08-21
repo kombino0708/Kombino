@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kombino - India's First Pre-Made Healthy Meals with Macro Nutrition</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">Kombino</div>
+            <div class="loading-spinner"></div>
+            <p>Preparing your healthy experience...</p>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="fab-container">
+        <button class="fab-main" onclick="toggleCart()">
+            <span class="fab-icon">🛒</span>
+            <span class="fab-count" id="fabCount">0</span>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo">
+                        <span class="logo-text">Kombino</span>
+                        <span class="logo-tagline">Healthy • Fresh • Transparent</span>
+                    </div>
+                </div>
+                <nav class="nav" id="nav">
+                    <ul class="nav-list">
+                        <li><a href="#home" class="nav-link">Home</a></li>
+                        <li><a href="#endorsements" class="nav-link">Endorsements</a></li>
+                        <li><a href="#menu" class="nav-link">Menu</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark/Light mode">
+                        <span class="theme-icon">🌙</span>
+                        <span class="theme-text">Dark / Light</span>
+                    </button>
+                    <button class="auth-btn" onclick="showAuthModal('signin')">Sign In</button>
+                    <button class="cart-btn" onclick="toggleCart()">
+                        <span class="cart-icon">🛒</span>
+                        <span class="cart-count">0</span>
+                    </button>
+                    <button class="btn btn--primary pulse-animation">Order Soon</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="hero-particles" id="particles"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-right">
+                    <div class="hero-badge">
+                        <span class="badge-icon">🌟</span>
+                        India's First Macro-Transparent Meals
+                    </div>
+                    <h1 class="hero-title">
+                        <span class="title-line">Healthy Meals</span>
+                        <span class="title-line accent">Made Simple</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Revolutionary pre-made meals with complete nutritional transparency. 
+                        Know exactly what you're eating with every single bite.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item" data-count="14">
+                            <span class="stat-number">0</span>
+                            <span class="stat-label">Menu Items</span>
+                        </div>
+                        <div class="stat-item" data-count="350">
+                            <span class="stat-number">0</span>
+                            <span class="stat-label">Avg Calories</span>
+                        </div>
+                        <div class="stat-item" data-count="100">
+                            <span class="stat-number">0</span>
+                            <span class="stat-label">% Transparency</span>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="btn btn--primary btn--lg hero-cta" onclick="scrollToSection('menu')">
+                            <span>Explore Menu</span>
+                            <span class="btn-arrow">→</span>
+                        </button>
+                        <button class="btn btn--outline btn--lg" onclick="scrollToSection('about')">Learn More</button>
+                    </div>
+                </div>
+                <div class="hero-visual" data-aos="fade-left">
+                    <div class="food-showcase">
+                        <div class="showcase-item featured" style="background-image: url('https://pplx-res.cloudinary.com/image/upload/v1754734195/pplx_project_search_images/8bc7e30c94fbf4bba29e3d953f7e1be3ea7473ed.png')">
+                            <div class="item-overlay">
+                                <h4>Meal Prep Bowls</h4>
+                                <p>Fresh • Colorful • Nutritious</p>
+                            </div>
+                        </div>
+                        <div class="showcase-item" style="background-image: url('https://pplx-res.cloudinary.com/image/upload/v1754966608/pplx_project_search_images/40406701df17111f193aae3d5a814e35f70431ec.png')">
+                            <div class="item-overlay">
+                                <h4>Power Bowls</h4>
+                                <p>350 Cal • 30g Protein</p>
+                            </div>
+                        </div>
+                        <div class="showcase-item" style="background-image: url('https://pplx-res.cloudinary.com/image/upload/v1755305542/pplx_project_search_images/84822d47e680eb598c1cb7cc92228889015a3da8.png')">
+                            <div class="item-overlay">
+                                <h4>Fresh Drinks</h4>
+                                <p>Cucumber Mint Cooler</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floating-elements">
+                        <div class="floating-element" style="--delay: 0s">🥗</div>
+                        <div class="floating-element" style="--delay: 1s">🥑</div>
+                        <div class="floating-element" style="--delay: 2s">🌿</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Endorsements Section -->
+    <section id="endorsements" class="endorsements">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">Industry Recognition</div>
+                <h2>Endorsed by India's Culinary Legends</h2>
+                <p>Kombino has earned recognition from Celebrity Chef Sanjeev Kapoor and leading food industry professionals across India</p>
+            </div>
+
+            <div class="endorsements-content">
+                <!-- Sanjeev Kapoor Recognition -->
+                <div class="celebrity-endorsement" data-aos="fade-up">
+                    <div class="endorsement-header">
+                        <div class="celebrity-badge">
+                            <span class="celebrity-icon">👨‍🍳</span>
+                            <span>Celebrity Chef Recognition</span>
+                        </div>
+                        <h3>Recognized by Celebrity Chef Sanjeev Kapoor</h3>
+                    </div>
+                    <div class="endorsement-content">
+                        <div class="endorsement-text">
+                            <p class="celebrity-description">
+                                Celebrity Chef Sanjeev Kapoor, India's most celebrated culinary expert and host of the iconic 'Khana Khazana', has recognized Kombino's innovative approach to healthy meal preparation. Known for revolutionizing Indian cuisine on television and authoring over 150 cookbooks, Chef Kapoor appreciates our commitment to transparent nutrition labeling and making healthy eating accessible while maintaining authentic flavors.
+                            </p>
+                            <blockquote class="celebrity-quote">
+                                "Innovation in healthy food preparation with complete nutritional transparency - this is the future of Indian cuisine."
+                                <cite>- Celebrity Chef Sanjeev Kapoor</cite>
+                            </blockquote>
+                        </div>
+                        <div class="chef-achievements">
+                            <div class="achievement-item">
+                                <span class="achievement-number">150+</span>
+                                <span class="achievement-label">Cookbooks Authored</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-number">20+</span>
+                                <span class="achievement-label">Years on Television</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-number">1B+</span>
+                                <span class="achievement-label">People Reached</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Photos Gallery -->
+                <div class="professional-gallery" data-aos="fade-up">
+                    <h3>Professional Recognition Gallery</h3>
+                    <div class="gallery-grid">
+                        <div class="endorsement-photo" data-aos="fade-up" data-aos-delay="100">
+                            <div class="photo-placeholder">
+                                <div class="placeholder-content">
+                                    <div class="placeholder-icon">👨‍💼</div>
+                                    <h4>Industry Presentation</h4>
+                                    <p>Preetinder Singh Walia presenting Kombino's healthy meal concept to industry professionals</p>
+                                </div>
+                            </div>
+                            <div class="photo-caption">
+                                <h4>Industry Leadership</h4>
+                                <p>Our co-founder sharing Kombino's vision with food industry leaders at professional networking events</p>
+                            </div>
+                        </div>
+
+                        <div class="endorsement-photo" data-aos="fade-up" data-aos-delay="200">
+                            <div class="photo-placeholder">
+                                <div class="placeholder-content">
+                                    <div class="placeholder-icon">📊</div>
+                                    <h4>Marketing Excellence</h4>
+                                    <p>Kombino's professional marketing materials showcasing our macro-transparent approach</p>
+                                </div>
+                            </div>
+                            <div class="photo-caption">
+                                <h4>Brand Recognition</h4>
+                                <p>Professional branding and materials highlighting our commitment to nutritional transparency and quality</p>
+                            </div>
+                        </div>
+
+                        <div class="endorsement-photo" data-aos="fade-up" data-aos-delay="300">
+                            <div class="photo-placeholder">
+                                <div class="placeholder-content">
+                                    <div class="placeholder-icon">🤝</div>
+                                    <h4>Industry Collaboration</h4>
+                                    <p>Industry collaboration and recognition at food sector events</p>
+                                </div>
+                            </div>
+                            <div class="photo-caption">
+                                <h4>Professional Validation</h4>
+                                <p>Building relationships with culinary experts and food industry leaders for mutual growth and innovation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Industry Recognition Points -->
+                <div class="recognition-points" data-aos="fade-up">
+                    <h3>Industry Achievements</h3>
+                    <div class="recognition-grid">
+                        <div class="recognition-item">
+                            <div class="recognition-icon">🏆</div>
+                            <p>Featured at prestigious food industry exhibitions and expos</p>
+                        </div>
+                        <div class="recognition-item">
+                            <div class="recognition-icon">💡</div>
+                            <p>Recognized by culinary professionals for innovative macro-transparent meal concept</p>
+                        </div>
+                        <div class="recognition-item">
+                            <div class="recognition-icon">🤝</div>
+                            <p>Building partnerships with health-conscious food industry leaders</p>
+                        </div>
+                        <div class="recognition-item">
+                            <div class="recognition-icon">🌱</div>
+                            <p>Gaining traction among nutritionists and wellness experts</p>
+                        </div>
+                        <div class="recognition-item">
+                            <div class="recognition-icon">📈</div>
+                            <p>Showcased at professional food sector events</p>
+                        </div>
+                        <div class="recognition-item">
+                            <div class="recognition-icon">⭐</div>
+                            <p>Appreciated by industry veterans for quality and innovation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Strip -->
+    <section class="features-strip">
+        <div class="container">
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-icon">📊</div>
+                    <span>Complete Macro Info</span>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <span>Ready in 2 Minutes</span>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌱</div>
+                    <span>Fresh Daily</span>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🚚</div>
+                    <span>Quick Delivery</span>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">❤️</div>
+                    <span>Health First</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">Our Story</div>
+                <h2>Meet the Visionaries Behind Kombino</h2>
+                <p>Three passionate entrepreneurs revolutionizing India's approach to healthy eating</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="mission-card" data-aos="fade-up">
+                    <div class="card-background"></div>
+                    <div class="card-content">
+                        <div class="card-icon">🚀</div>
+                        <h3>India's Food Revolution</h3>
+                        <p>Kombino is pioneering a new era in Indian nutrition with the country's first pre-made healthy meals featuring complete macro transparency. We're not just serving food – we're serving knowledge, health, and convenience.</p>
+                        <div class="highlight-stats">
+                            <div class="highlight-stat">
+                                <span class="stat-value">First</span>
+                                <span class="stat-desc">Macro-transparent meals in India</span>
+                            </div>
+                            <div class="highlight-stat">
+                                <span class="stat-value">100%</span>
+                                <span class="stat-desc">Nutritional transparency</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="founders-section" data-aos="fade-up">
+                    <h3 class="founders-title">Our Founders</h3>
+                    <div class="founders-grid">
+                        <div class="founder-card">
+                            <div class="founder-avatar">
+                                <div class="avatar-bg"></div>
+                                <span class="avatar-text">RT</span>
+                            </div>
+                            <div class="founder-info">
+                                <h4>Raaghav Tony</h4>
+                                <p class="founder-role">Co-Founder</p>
+                                <p class="founder-bio">Passionate about revolutionizing healthy eating in Tricity through transparent nutrition and exceptional taste.</p>
+                            </div>
+                            <div class="founder-social">
+                                <a href="https://www.instagram.com/raaghav_tony?igsh=cmd1azl1bmdkcGN2" target="_blank" class="social-link">Instagram</a>
+                            </div>
+                        </div>
+
+                        <div class="founder-card">
+                            <div class="founder-avatar">
+                                <div class="avatar-bg"></div>
+                                <span class="avatar-text">PS</span>
+                            </div>
+                            <div class="founder-info">
+                                <h4>Preetinder Singh Walia</h4>
+                                <p class="founder-role">Co-Founder</p>
+                                <p class="founder-bio">Dedicated to creating convenient, nutritious meal solutions that fit into busy lifestyles.</p>
+                            </div>
+                            <div class="founder-social">
+                                <a href="https://www.instagram.com/preetinderwalia1809?igsh=czQyZm1ydDJ0dm84" target="_blank" class="social-link">Instagram</a>
+                            </div>
+                        </div>
+
+                        <div class="founder-card">
+                            <div class="founder-avatar">
+                                <div class="avatar-bg"></div>
+                                <span class="avatar-text">R</span>
+                            </div>
+                            <div class="founder-info">
+                                <h4>Rubaina</h4>
+                                <p class="founder-role">Co-Founder</p>
+                                <p class="founder-bio">Expert in culinary innovation, focused on developing delicious recipes that never compromise on health.</p>
+                            </div>
+                            <div class="founder-social">
+                                <a href="https://www.instagram.com/_rubaina_15?igsh=Z296bzU0eHlvbmpx" target="_blank" class="social-link">Instagram</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">Our Menu</div>
+                <h2>Healthy Meals, Transparent Nutrition</h2>
+                <p>Every meal comes with complete macro information – know exactly what you're eating</p>
+            </div>
+
+            <div class="menu-controls" data-aos="fade-up">
+                <div class="filter-section">
+                    <h4>Categories</h4>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-category="all">All Items</button>
+                        <button class="filter-btn" data-category="Main Course">Main Course</button>
+                        <button class="filter-btn" data-category="Breakfast/Snacks">Breakfast</button>
+                        <button class="filter-btn" data-category="Beverages">Beverages</button>
+                        <button class="filter-btn" data-category="Snacks/Desserts">Desserts</button>
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <h4>Dietary Preferences</h4>
+                    <div class="dietary-filters">
+                        <button class="dietary-btn active" data-dietary="all">All</button>
+                        <button class="dietary-btn" data-dietary="Vegetarian">🌿 Vegetarian</button>
+                        <button class="dietary-btn" data-dietary="Vegan">🌱 Vegan</button>
+                        <button class="dietary-btn" data-dietary="Non-Veg">🍗 Non-Veg</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-grid" id="menuGrid">
+                <!-- Menu items will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">Food Gallery</div>
+                <h2>Fresh, Colorful, Delicious</h2>
+                <p>A visual feast of our healthy creations</p>
+            </div>
+
+            <div class="gallery-grid" data-aos="fade-up">
+                <div class="gallery-item large" data-category="bowls">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1754966608/pplx_project_search_images/40406701df17111f193aae3d5a814e35f70431ec.png" alt="Colorful veggie power bowl" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Veggie Power Bowl</h4>
+                        <p>Fresh vegetables, black rice, and protein</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="muffins">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1755305542/pplx_project_search_images/d0e27f9cefd86cc40fa35c73af5ec3810ac8df96.png" alt="Healthy egg white muffins" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Egg White Muffins</h4>
+                        <p>Protein-packed breakfast option</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="drinks">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1755305542/pplx_project_search_images/84822d47e680eb598c1cb7cc92228889015a3da8.png" alt="Green smoothie with mint" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Fresh Green Smoothie</h4>
+                        <p>Refreshing and nutritious</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item wide" data-category="meal-prep">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1754734195/pplx_project_search_images/8bc7e30c94fbf4bba29e3d953f7e1be3ea7473ed.png" alt="Meal prep containers" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Meal Prep Ready</h4>
+                        <p>Convenient, portion-controlled meals</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="wraps">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1755305542/pplx_project_search_images/9a1dabfda96091c637f860bb6837bf24acc058e6.png" alt="Healthy veggie wrap" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Veggie Wrap</h4>
+                        <p>Whole wheat with fresh vegetables</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="bowls">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1755305543/pplx_project_search_images/be507f4b1d6a187bb92b6020718ba140316b5db9.png" alt="Healthy grain bowls" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Grain Bowls</h4>
+                        <p>Balanced nutrition in every bite</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">Why Kombino</div>
+                <h2>The Future of Healthy Eating</h2>
+                <p>What makes us different from everyone else</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="benefit-icon">📊</div>
+                    <h3>Complete Transparency</h3>
+                    <p>Every meal comes with detailed macro information. No guessing, no approximations – just pure nutritional facts.</p>
+                    <div class="benefit-feature">100% macro accuracy</div>
+                </div>
+
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Instant Convenience</h3>
+                    <p>Pre-made meals ready in under 2 minutes. Perfect for busy professionals and health-conscious individuals.</p>
+                    <div class="benefit-feature">Ready in 2 minutes</div>
+                </div>
+
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="benefit-icon">🌱</div>
+                    <h3>Health Without Compromise</h3>
+                    <p>Delicious meals that prove healthy eating doesn't mean sacrificing taste or satisfaction.</p>
+                    <div class="benefit-feature">Taste guaranteed</div>
+                </div>
+
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="benefit-icon">🚀</div>
+                    <h3>Innovation First</h3>
+                    <p>India's first macro-transparent meal service, pioneering a new standard in the food industry.</p>
+                    <div class="benefit-feature">Industry first</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">Simple Process</div>
+                <h2>From Order to Plate in 3 Steps</h2>
+            </div>
+
+            <div class="process-steps">
+                <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-visual">
+                        <div class="step-number">01</div>
+                        <div class="step-icon">📱</div>
+                    </div>
+                    <div class="step-content">
+                        <h3>Browse & Choose</h3>
+                        <p>Explore our menu with complete nutritional information and select meals that match your health goals.</p>
+                    </div>
+                </div>
+
+                <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-visual">
+                        <div class="step-number">02</div>
+                        <div class="step-icon">👨‍🍳</div>
+                    </div>
+                    <div class="step-content">
+                        <h3>We Prepare Fresh</h3>
+                        <p>Our team carefully prepares your meals using the freshest ingredients and precise nutritional calculations.</p>
+                    </div>
+                </div>
+
+                <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-visual">
+                        <div class="step-number">03</div>
+                        <div class="step-icon">🚚</div>
+                    </div>
+                    <div class="step-content">
+                        <h3>Fast Delivery</h3>
+                        <p>Receive your perfectly portioned, macro-calculated meals ready to eat or quick reheat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">Get In Touch</div>
+                <h2>Ready to Start Your Health Journey?</h2>
+                <p>We're here to help you achieve your nutritional goals</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-card">
+                        <h3>Contact Information</h3>
+                        <div class="info-items">
+                            <div class="info-item">
+                                <div class="info-icon">📍</div>
+                                <div class="info-details">
+                                    <span class="info-label">Service Area</span>
+                                    <span class="info-value">Mohali • Chandigarh • Panchkula</span>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">📧</div>
+                                <div class="info-details">
+                                    <span class="info-label">Email</span>
+                                    <a href="mailto:kombinofoods@gmail.com" class="info-value info-link">kombinofoods@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">📞</div>
+                                <div class="info-details">
+                                    <span class="info-label">Phone</span>
+                                    <div class="phone-numbers">
+                                        <a href="tel:7009560208" class="info-value info-link">7009560208</a>
+                                        <a href="tel:8264146204" class="info-value info-link">8264146204</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">📱</div>
+                                <div class="info-details">
+                                    <span class="info-label">Instagram</span>
+                                    <a href="https://www.instagram.com/kombinofoods?igsh=M3BwZ2huNWZ4YnBn" target="_blank" class="info-value info-link">kombinofoods</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container" data-aos="fade-left">
+                    <div class="contact-form-card">
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Subject</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn--primary btn--full-width">
+                                <span>Send Message</span>
+                                <span class="btn-arrow">→</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3>Kombino</h3>
+                        <p>India's first pre-made healthy meals with complete macro nutrition transparency.</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/kombinofoods?igsh=M3BwZ2huNWZ4YnBn" target="_blank" class="social-link">
+                            <span>kombinofoods</span>
+                        </a>
+                        <a href="mailto:kombinofoods@gmail.com" class="social-link">
+                            <span>Email</span>
+                        </a>
+                        <a href="tel:7009560208" class="social-link">
+                            <span>Call Us</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#endorsements">Endorsements</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Menu Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#menu">Main Course</a></li>
+                        <li><a href="#menu">Breakfast & Snacks</a></li>
+                        <li><a href="#menu">Beverages</a></li>
+                        <li><a href="#menu">Desserts</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Get In Touch</h4>
+                    <p>Ready to start your healthy journey?</p>
+                    <div class="contact-links">
+                        <a href="tel:7009560208" class="contact-link">📞 7009560208</a>
+                        <a href="tel:8264146204" class="contact-link">📞 8264146204</a>
+                        <a href="mailto:kombinofoods@gmail.com" class="contact-link">📧 kombinofoods@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kombino. All rights reserved. Made with ❤️ for healthy living.</p>
+                <div class="footer-badges">
+                    <span class="footer-badge">🌱 100% Fresh</span>
+                    <span class="footer-badge">📊 Macro Transparent</span>
+                    <span class="footer-badge">🇮🇳 Made in India</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cartModal" class="modal hidden">
+        <div class="modal-backdrop" onclick="toggleCart()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Your Order</h3>
+                <button class="modal-close" onclick="toggleCart()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="cartItems"></div>
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span class="cart-subtotal">₹<span id="cartSubtotal">0</span></span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery:</span>
+                        <span class="delivery-fee">₹50</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span class="cart-total">₹<span id="cartTotal">50</span></span>
+                    </div>
+                    <button class="btn btn--primary btn--full-width" id="checkoutBtn">
+                        <span>Order Soon</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Authentication Modal -->
+    <div id="authModal" class="modal hidden">
+        <div class="modal-backdrop" onclick="hideAuthModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="authModalTitle">Sign In</h3>
+                <button class="modal-close" onclick="hideAuthModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Sign In Form -->
+                <form id="signinForm" class="auth-form">
+                    <div class="form-group">
+                        <label class="form-label">Username or Email</label>
+                        <input type="text" class="form-control" id="signinUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" id="signinPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">
+                        <span>Sign In</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                    <div class="auth-switch">
+                        <p>Don't have an account? <a href="#" onclick="showAuthModal('signup')">Sign Up</a></p>
+                    </div>
+                </form>
+
+                <!-- Sign Up Form -->
+                <form id="signupForm" class="auth-form hidden">
+                    <div class="form-group">
+                        <label class="form-label">Mobile Number</label>
+                        <input type="tel" class="form-control" id="signupMobile" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-control" id="signupUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Gmail ID</label>
+                        <input type="email" class="form-control" id="signupEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" id="signupPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">
+                        <span>Create Account</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                    <div class="auth-switch">
+                        <p>Already have an account? <a href="#" onclick="showAuthModal('signin')">Sign In</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Address Modal -->
+    <div id="addressModal" class="modal hidden">
+        <div class="modal-backdrop" onclick="hideAddressModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Delivery Address</h3>
+                <button class="modal-close" onclick="hideAddressModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addressForm" class="address-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Name *</label>
+                            <input type="text" class="form-control" id="customerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone *</label>
+                            <input type="tel" class="form-control" id="customerPhone" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Address Line 1 *</label>
+                        <input type="text" class="form-control" id="addressLine1" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Address Line 2</label>
+                        <input type="text" class="form-control" id="addressLine2">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">City *</label>
+                            <input type="text" class="form-control" id="customerCity" value="Tricity" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Pincode *</label>
+                            <input type="text" class="form-control" id="customerPincode" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Landmark</label>
+                        <input type="text" class="form-control" id="customerLandmark">
+                    </div>
+                    
+                    <div class="order-summary-section">
+                        <h4>Order Summary</h4>
+                        <div id="orderSummaryItems"></div>
+                        <div class="summary-totals">
+                            <div class="summary-row">
+                                <span>Subtotal:</span>
+                                <span>₹<span id="summarySubtotal">0</span></span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Delivery:</span>
+                                <span>₹50</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Estimated Delivery:</span>
+                                <span>1-2 hours</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total:</span>
+                                <span>₹<span id="summaryTotal">50</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn--primary btn--full-width">
+                        <span>Confirm Order</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script src="app.js"></script>
+</body>
+</html>
